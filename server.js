@@ -1,6 +1,7 @@
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
+
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
@@ -8,9 +9,10 @@ const io = new Server(server);
 app.use(express.static('public'));
 app.use(express.json());
 
+// Состояние комнат
 let rooms = {}; // { roomId: { videoTime: 0, videoId: '', users: [] } }
 
-// Создать комнату
+// Создание комнаты
 app.post('/create-room', (req, res) => {
     const roomId = Math.random().toString(36).substr(2, 6);
     rooms[roomId] = { videoTime: 0, videoId: '', users: [] };
@@ -49,4 +51,5 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => console.log('User disconnected'));
 });
 
-server.listen(3000, () => console.log('Server running on port 3000'));
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
