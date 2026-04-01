@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Rave Mini App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="login">
+    <input type="text" id="username" placeholder="Ваше имя">
+    <button id="createRoomBtn">Создать комнату</button>
+    <input type="text" id="roomIdInput" placeholder="ID комнаты">
+    <button id="joinRoomBtn">Войти в комнату</button>
+  </div>
+
+  <div id="room" style="display:none;">
+    <div id="videoContainer"></div>
+    <input type="text" id="chatInput" placeholder="Сообщение">
+    <button id="sendChatBtn">Отправить</button>
+    <div id="chat"></div>
+  </div>
+
+  <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="app.js"></script>
+</body>
+</html>
